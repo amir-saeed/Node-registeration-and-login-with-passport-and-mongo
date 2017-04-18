@@ -1,0 +1,19 @@
+{
+  "name": "node-passport",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amir-saeed/Node-registeration-and-login-with-passport-and-mongo.git"
+  },
+  "author": "Amir Saeed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amir-saeed/Node-registeration-and-login-with-passport-and-mongo/issues"
+  },
+  "homepage": "https://github.com/amir-saeed/Node-registeration-and-login-with-passport-and-mongo#readme"
+}
