@@ -10,8 +10,14 @@ var passport = require("passport");
 var localStrategy = require("passport-local").Strategy;
 var mongo = require("mongodb");
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/nodeapp");
-var db = mongoose.connection();
+var config = require('./config/index');
+var logger  = require('./log/index');
+
+// Mongo DB connection
+mongoose.connect(config.dbUri);
+var db = mongoose.connection;
+
+logger.info('Connected Successfully');
 
 // Routes
 
@@ -21,19 +27,26 @@ var users = require("./routes/users");
 // Initialized app
 var app = express();
 
+logger.info('app initialized');
+
 // view engline
 app.set('views', path.join(__dirname, 'views'));
 app.engine("handlebars", exphbs({defaultLayout: 'layout'}));
 app.set('view engline', 'handlebars');
 
+logger.info('view engine: handlebar is set');
 
 // body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
+logger.info('middleware is set');
+
 // static folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+logger.info('static folder is set');
 
 // express session handler
 app.use(session({
@@ -82,5 +95,5 @@ app.use("/users", users);
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function () {
-    console.log('Server is started on port' + app.get('port'));
+    console.log('Server is started on port: ' + app.get('port'));
 });
